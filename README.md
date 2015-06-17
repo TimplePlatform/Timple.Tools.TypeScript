@@ -25,3 +25,6 @@ using (var sw = new StreamWriter(File.Create("test.ts"))) {
 }
 ```
 This will generate a test.ts file exposing `MyController` routes.
+
+## TypeScriptDirectoryAutoCompiler
+Watch a directory, and its subdirectories, for any typescript (.ts) file to compile. Any change automatically compiles the file.
