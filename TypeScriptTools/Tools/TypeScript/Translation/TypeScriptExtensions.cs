@@ -58,13 +58,13 @@ namespace Timple.Tools.TypeScript.Translation
       return "implements " + String.Join(", ", inters.Select(x => x.FullName));
     }
 
-    public static List<Tuple<String, long>> GetValidTypeScriptEnumValues(this Type tp) {
+    public static List<Tuple<String, string>> GetValidTypeScriptEnumValues(this Type tp) {
       var names = Enum.GetNames(tp);
       var values = Enum.GetValues(tp);
 
-      var ret = new List<Tuple<String, long>>(names.Length);
+      var ret = new List<Tuple<String, string>>(names.Length);
       for (var i = 0; i < names.Length; i++) {
-        ret.Add(new Tuple<string, long>(names[i], (long)values.GetValue(i)));
+        ret.Add(new Tuple<string, string>(names[i], Enum.Format(tp, values.GetValue(i), "D")));
       }
       return ret;
     }
