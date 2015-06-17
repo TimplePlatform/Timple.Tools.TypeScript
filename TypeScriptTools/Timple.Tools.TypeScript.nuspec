@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>Everton Araujo</authors>
+    <owners>Everton Araujo</owners>
+    <projectUrl>https://github.com/evbasso/Timple.Tools.TypeScript/</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Tools for TypeScript in C#</description>
+    <releaseNotes>Second Version, Alpha Release</releaseNotes>
+    <copyright>Copyright 2015</copyright>
+    <tags>TypeScript C#</tags>
+  </metadata>
+</package>

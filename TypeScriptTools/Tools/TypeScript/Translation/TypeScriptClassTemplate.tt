@@ -1,0 +1,45 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+
+/**
+ * Class: <#=TheType.FullName#>
+ * Assembly: <#=TheType.Assembly.FullName#>
+ */
+module <#=TheType.Namespace#> {
+  
+  export class <#=TheType.Name#> <#=TheType.GetTypeScriptExtends()#> <#=TheType.GetTypeScriptImplements()#> {
+<#
+var props = TheType.GetValidTypeScriptProperties();
+foreach(var p in props) { 
+#>
+    private _<#=p.Name#> : <#=p.PropertyType.ToTypeScriptName()#>;
+<#
+}
+#>
+
+<#
+foreach(var p in props) { 
+    if(p.CanRead) { 
+#>
+    public get <#=p.Name#>() { 
+      return this._<#=p.Name#>;
+    }
+
+<# 
+    } 
+#>
+<# if(p.CanWrite) { #>
+    public set <#=p.Name#>(value) {
+      this._<#=p.Name#> = value;
+    }
+
+<# } #>
+<#
+}
+#>
+  }
+
+}

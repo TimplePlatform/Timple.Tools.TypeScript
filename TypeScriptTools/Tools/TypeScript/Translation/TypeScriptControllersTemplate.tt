@@ -1,0 +1,39 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+
+<#
+var c = Service;
+#>
+/**
+ * Controller: <#=c.ControllerType.Name#>
+ * Assembly: <#=c.ControllerType.Assembly.FullName#>
+ */
+module <#=c.ControllerType.Namespace#> {
+  
+  export class <#=c.ControllerType.Name#> {
+    private routePrefix: string;
+
+    constructor(){
+      this.routePrefix = "<#=c.RoutePrefix.Prefix#>";
+    }
+
+    <#
+    foreach(var call in c.Calls) {
+    #>
+
+    <#=call.CallMethod.Name#> ( <#=call.GetTypeScriptParameters()#> ) {
+      var route = this.routePrefix + <#=call.GenerateRouteConcat()#>;
+      var obj = <#=call.GetBodyParameter()#>;
+
+      return <#=call.GenerateJQueryCall("route","obj") #> ;
+    }
+
+    <#
+    }
+    #>
+  }
+
+}

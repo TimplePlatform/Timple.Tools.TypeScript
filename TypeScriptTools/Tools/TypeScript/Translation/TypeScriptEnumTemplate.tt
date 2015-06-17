@@ -1,0 +1,23 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+
+/**
+ * Enum: <#=TheType.FullName#>
+ * Assembly: <#=TheType.Assembly.FullName#>
+ */
+module <#=TheType.Namespace#> {
+  
+  export enum <#=TheType.Name#> {
+<# 
+var values = TheType.GetValidTypeScriptEnumValues();
+foreach(var val in values) { 
+#>
+    <#=val.Item1#> = <#=val.Item2#>,
+<#
+}
+#>
+  }
+}
