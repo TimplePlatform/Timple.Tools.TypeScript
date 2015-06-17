@@ -11,13 +11,19 @@ var c = Service;
  * Controller: <#=c.ControllerType.Name#>
  * Assembly: <#=c.ControllerType.Assembly.FullName#>
  */
+<#
+if (!String.IsNullOrEmpty(c.ControllerType.Namespace)) {
+#>
 module <#=c.ControllerType.Namespace#> {
-  
+<#
+}
+#>
+
   export class <#=c.ControllerType.Name#> {
     private routePrefix: string;
 
     constructor(){
-      this.routePrefix = "<#=c.RoutePrefix.Prefix#>";
+      this.routePrefix = "<#=c.RoutePrefix != null ? c.RoutePrefix.Prefix : "" #>";
     }
 
     <#
@@ -36,4 +42,10 @@ module <#=c.ControllerType.Namespace#> {
     #>
   }
 
+<#
+if (!String.IsNullOrEmpty(c.ControllerType.Namespace)) {
+#>
 }
+<#
+}
+#>

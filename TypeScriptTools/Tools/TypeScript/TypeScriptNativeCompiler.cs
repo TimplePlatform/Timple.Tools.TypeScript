@@ -38,11 +38,11 @@ namespace Timple.Tools.TypeScript
         Version v = null;
 
         p.OutputDataReceived += (sender, e) => {
-          if (e.Data == null)
+          if (String.IsNullOrEmpty(e.Data))
             return;
 
           String[] parts = e.Data.Split(' ');
-          Version.TryParse(parts[1], out v);
+          Version.TryParse(parts.Last(), out v);
         };
 
         p.BeginErrorReadLine();

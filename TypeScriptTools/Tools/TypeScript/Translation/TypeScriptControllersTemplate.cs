@@ -18,7 +18,7 @@ namespace Timple.Tools.TypeScript.Translation
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "W:\TypeScriptTools\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptControllersTemplate.tt"
+    #line 1 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptControllersTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "12.0.0.0")]
     public partial class TypeScriptControllersTemplate : TypeScriptControllersTemplateBase
     {
@@ -30,7 +30,7 @@ namespace Timple.Tools.TypeScript.Translation
         {
             this.Write("\r\n");
             
-            #line 7 "W:\TypeScriptTools\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptControllersTemplate.tt"
+            #line 7 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptControllersTemplate.tt"
 
 var c = Service;
 
@@ -39,28 +39,46 @@ var c = Service;
             #line hidden
             this.Write("/**\r\n * Controller: ");
             
-            #line 11 "W:\TypeScriptTools\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptControllersTemplate.tt"
+            #line 11 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptControllersTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.ControllerType.Name));
             
             #line default
             #line hidden
             this.Write("\r\n * Assembly: ");
             
-            #line 12 "W:\TypeScriptTools\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptControllersTemplate.tt"
+            #line 12 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptControllersTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.ControllerType.Assembly.FullName));
             
             #line default
             #line hidden
-            this.Write("\r\n */\r\nmodule ");
+            this.Write("\r\n */\r\n");
             
-            #line 14 "W:\TypeScriptTools\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptControllersTemplate.tt"
+            #line 14 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptControllersTemplate.tt"
+
+if (!String.IsNullOrEmpty(c.ControllerType.Namespace)) {
+
+            
+            #line default
+            #line hidden
+            this.Write("module ");
+            
+            #line 17 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptControllersTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.ControllerType.Namespace));
             
             #line default
             #line hidden
-            this.Write(" {\r\n  \r\n  export class ");
+            this.Write(" {\r\n");
             
-            #line 16 "W:\TypeScriptTools\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptControllersTemplate.tt"
+            #line 18 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptControllersTemplate.tt"
+
+}
+
+            
+            #line default
+            #line hidden
+            this.Write("\r\n  export class ");
+            
+            #line 22 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptControllersTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(c.ControllerType.Name));
             
             #line default
@@ -68,14 +86,14 @@ var c = Service;
             this.Write(" {\r\n    private routePrefix: string;\r\n\r\n    constructor(){\r\n      this.routePrefi" +
                     "x = \"");
             
-            #line 20 "W:\TypeScriptTools\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptControllersTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(c.RoutePrefix.Prefix));
+            #line 26 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptControllersTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(c.RoutePrefix != null ? c.RoutePrefix.Prefix : ""));
             
             #line default
             #line hidden
             this.Write("\";\r\n    }\r\n\r\n    ");
             
-            #line 23 "W:\TypeScriptTools\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptControllersTemplate.tt"
+            #line 29 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptControllersTemplate.tt"
 
     foreach(var call in c.Calls) {
     
@@ -84,49 +102,66 @@ var c = Service;
             #line hidden
             this.Write("\r\n    ");
             
-            #line 27 "W:\TypeScriptTools\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptControllersTemplate.tt"
+            #line 33 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptControllersTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(call.CallMethod.Name));
             
             #line default
             #line hidden
             this.Write(" ( ");
             
-            #line 27 "W:\TypeScriptTools\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptControllersTemplate.tt"
+            #line 33 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptControllersTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(call.GetTypeScriptParameters()));
             
             #line default
             #line hidden
             this.Write(" ) {\r\n      var route = this.routePrefix + ");
             
-            #line 28 "W:\TypeScriptTools\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptControllersTemplate.tt"
+            #line 34 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptControllersTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(call.GenerateRouteConcat()));
             
             #line default
             #line hidden
             this.Write(";\r\n      var obj = ");
             
-            #line 29 "W:\TypeScriptTools\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptControllersTemplate.tt"
+            #line 35 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptControllersTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(call.GetBodyParameter()));
             
             #line default
             #line hidden
             this.Write(";\r\n\r\n      return ");
             
-            #line 31 "W:\TypeScriptTools\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptControllersTemplate.tt"
+            #line 37 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptControllersTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(call.GenerateJQueryCall("route","obj")));
             
             #line default
             #line hidden
             this.Write(" ;\r\n    }\r\n\r\n    ");
             
-            #line 34 "W:\TypeScriptTools\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptControllersTemplate.tt"
+            #line 40 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptControllersTemplate.tt"
 
     }
     
             
             #line default
             #line hidden
-            this.Write("  }\r\n\r\n}\r\n");
+            this.Write("  }\r\n\r\n");
+            
+            #line 45 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptControllersTemplate.tt"
+
+if (!String.IsNullOrEmpty(c.ControllerType.Namespace)) {
+
+            
+            #line default
+            #line hidden
+            this.Write("}\r\n");
+            
+            #line 49 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptControllersTemplate.tt"
+
+}
+
+            
+            #line default
+            #line hidden
             return this.GenerationEnvironment.ToString();
         }
     }

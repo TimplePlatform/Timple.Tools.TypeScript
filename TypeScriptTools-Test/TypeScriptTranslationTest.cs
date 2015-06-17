@@ -49,6 +49,13 @@ namespace TypeScriptTools_Test
     }
 
     [TestMethod]
+    public void CompileAssemblyControllers() {
+      using (ApiControllerClientBuilder builder = new ApiControllerClientBuilder(Path.Combine(Path.GetDirectoryName(tsFile), "assemblies.ts"))) {
+        builder.GenerateForAssemblies(AppDomain.CurrentDomain.GetAssemblies());
+      }
+    }
+
+    [TestMethod]
     public void DirectoryAutoCompiler() {
       using (TypeScriptDirectoryAutoCompiler compiler = new TypeScriptDirectoryAutoCompiler(Path.GetDirectoryName(tsFile))) {
         var newTsFile = Path.Combine(Path.GetDirectoryName(tsFile), "new-ts.ts");
@@ -63,7 +70,7 @@ namespace TypeScriptTools_Test
 
         Thread.Sleep(5000);
 
-        var newJsFile = Path.Combine(Path.GetDirectoryName(newTsFile), Path.GetFileNameWithoutExtension(newTsFile)+".js");
+        var newJsFile = Path.Combine(Path.GetDirectoryName(newTsFile), Path.GetFileNameWithoutExtension(newTsFile) + ".js");
         if (!File.Exists(newJsFile))
           throw new FileNotFoundException(newJsFile);
       }

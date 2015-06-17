@@ -10,12 +10,18 @@ using System.Web.Http.Controllers;
 
 namespace Timple.Tools.TypeScript
 {
-  public class ApiControllerClientBuilder
+  public class ApiControllerClientBuilder : IDisposable
   {
     private readonly TypeScriptTranslator translator;
+    private readonly StreamWriter stream;
 
     public ApiControllerClientBuilder(TypeScriptTranslator translator) {
       this.translator = translator;
+    }
+
+    public ApiControllerClientBuilder(String filePath) {
+      stream = new StreamWriter(File.Create(filePath));
+      translator = new TypeScriptTranslator(stream);
     }
 
     public void GenerateForAssemblies(Assembly[] assemblies) {
@@ -27,12 +33,17 @@ namespace Timple.Tools.TypeScript
       var types = assembly.GetTypes();
 
       foreach (var tp in types) {
-        if (typeof(ApiController).IsAssignableFrom(tp))
+        if (!tp.IsSubclassOf(typeof(ApiController)))
           continue;
 
         translator.TranslateController(tp);
       }
     }
 
+
+    public void Dispose() {
+      if (stream != null)
+        stream.Dispose();
+    }
   }
 }

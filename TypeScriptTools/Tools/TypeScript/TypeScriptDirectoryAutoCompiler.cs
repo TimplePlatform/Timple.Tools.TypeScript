@@ -25,21 +25,39 @@ namespace Timple.Tools.TypeScript
       fsWatcher.Deleted += fsWatcher_Deleted;
       fsWatcher.Renamed += fsWatcher_Renamed;
 
-      var files = Directory.GetFiles(path, "*.ts");
-      foreach (var file in files)
-        ThreadPool.QueueUserWorkItem(CompileScript, file);
+      ThreadPool.QueueUserWorkItem(CompileScript, Directory.GetFiles(path, "*.ts"));
+
+      if (recursive) {
+        Stack<String> dirs = new Stack<string>(Directory.GetDirectories(path));
+
+        while (dirs.Count > 0) {
+          var dir = dirs.Pop();
+
+          ThreadPool.QueueUserWorkItem(CompileScript,Directory.GetFiles(dir, "*.ts"));
+          
+          var subDirs = Directory.GetDirectories(dir);
+          foreach (var d in subDirs)
+            dirs.Push(d);
+        }
+      }
 
       fsWatcher.EnableRaisingEvents = true;
     }
 
     private void CompileScript(object state) {
-      String tsFile = (String)state;
+      String[] tsFiles = state as String[];
 
-      TypeScriptNativeCompiler c = new TypeScriptNativeCompiler(Path.GetDirectoryName(tsFile));
-      try {
-        c.Compile(tsFile);
-      } catch (TypeScriptNativeCompilerException ex) {
-        File.WriteAllLines(tsFile + ".err", ex.Errors);
+      if (tsFiles == null)
+        tsFiles = new string[] { (string)state };
+
+      TypeScriptNativeCompiler c = new TypeScriptNativeCompiler();
+
+      foreach (var tsFile in tsFiles) {
+        try {
+          c.Compile(tsFile);
+        } catch (TypeScriptNativeCompilerException ex) {
+          File.WriteAllLines(tsFile + ".err", ex.Errors);
+        }
       }
     }
 
