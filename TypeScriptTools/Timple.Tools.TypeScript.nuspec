@@ -9,7 +9,7 @@
     <projectUrl>https://github.com/evbasso/Timple.Tools.TypeScript/</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Tools for TypeScript in C#</description>
-    <releaseNotes>Second Version, Alpha Release</releaseNotes>
+    <releaseNotes>Translator and Native Compiler Interface Beta, DirectoryAutoCompiler Alpha</releaseNotes>
     <copyright>Copyright 2015</copyright>
     <tags>TypeScript C#</tags>
   </metadata>

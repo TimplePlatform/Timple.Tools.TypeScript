@@ -4,6 +4,7 @@ using System.IO;
 using System.Reflection;
 using Timple.Tools.TypeScript;
 using TypeScriptTools_Test.Sample;
+using System.Threading;
 
 namespace TypeScriptTools_Test
 {
@@ -45,6 +46,27 @@ namespace TypeScriptTools_Test
     public void CompileScriptController() {
       TypeScriptNativeCompiler compiler = new TypeScriptNativeCompiler(Path.GetDirectoryName(tsFile));
       compiler.Compile(tsFile);
+    }
+
+    [TestMethod]
+    public void DirectoryAutoCompiler() {
+      using (TypeScriptDirectoryAutoCompiler compiler = new TypeScriptDirectoryAutoCompiler(Path.GetDirectoryName(tsFile))) {
+        var newTsFile = Path.Combine(Path.GetDirectoryName(tsFile), "new-ts.ts");
+        File.WriteAllLines(newTsFile, new string[]{
+          "class NewClass {",
+          "  private name: string;",
+          "  public get Name(){",
+          "    return this.name;",
+          "  }",
+          "}"
+        });
+
+        Thread.Sleep(5000);
+
+        var newJsFile = Path.Combine(Path.GetDirectoryName(newTsFile), Path.GetFileNameWithoutExtension(newTsFile)+".js");
+        if (!File.Exists(newJsFile))
+          throw new FileNotFoundException(newJsFile);
+      }
     }
 
   }

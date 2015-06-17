@@ -82,7 +82,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TypeScriptFileHeaderTemplate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Tools\TypeScript\TypeScriptGenerator.cs" />
+    <Compile Include="Tools\TypeScript\TypeScriptDirectoryAutoCompiler.cs" />
     <Compile Include="Tools\TypeScript\Translation\TypeScriptInterfaceTemplate.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
