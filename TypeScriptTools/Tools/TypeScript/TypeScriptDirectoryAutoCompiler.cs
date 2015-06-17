@@ -12,12 +12,13 @@ namespace Timple.Tools.TypeScript
   {
     private readonly FileSystemWatcher fsWatcher;
 
-    public TypeScriptDirectoryAutoCompiler(String path) {
+    public TypeScriptDirectoryAutoCompiler(String path, bool recursive = true) {
       fsWatcher = new FileSystemWatcher();
       fsWatcher.Path = path;
       fsWatcher.NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.FileName | NotifyFilters.Size;
 
       fsWatcher.Filter = "*.ts";
+      fsWatcher.IncludeSubdirectories = recursive;
 
       fsWatcher.Changed += fsWatcher_Changed;
       fsWatcher.Created += fsWatcher_Changed;

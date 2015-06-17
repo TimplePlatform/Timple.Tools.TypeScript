@@ -96,6 +96,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Timple.Tools.TypeScript.nuspec" />
     <None Include="Tools\TypeScript\Translation\TypeScriptClassTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>TypeScriptClassTemplate.cs</LastGenOutput>
