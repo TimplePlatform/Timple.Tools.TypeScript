@@ -21,10 +21,17 @@ You can generate TypeScript Client for your WebApi Controllers
 using (var sw = new StreamWriter(File.Create("test.ts"))) {
     TypeScriptTranslator translator = new TypeScriptTranslator(sw);
     translator.TranslateController(typeof(MyController));
-    sw.Flush();
 }
 ```
 This will generate a test.ts file exposing `MyController` routes.
+You can also use `ApiControllerClientBuilder` to generate for assemblies.
+```CSharp
+using (var sw = new StreamWriter(File.Create("test.ts"))) {
+    TypeScriptTranslator translator = new TypeScriptTranslator(sw);
+    ApiControllerClientBuilder clientBuilder = new ApiControllerClientBuilder(translator);
+    clientBuilder.GenerateForAssemblies(AppDomain.CurrentDomain.GetAssemblies());
+}
+```
 
 ## TypeScriptDirectoryAutoCompiler
 Watch a directory, and its subdirectories, for any typescript (.ts) file to compile. Any change automatically compiles the file.
