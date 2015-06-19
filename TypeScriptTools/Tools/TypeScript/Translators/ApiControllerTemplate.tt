@@ -23,18 +23,18 @@ module <#=c.ControllerType.Namespace#> {
     private routePrefix: string;
 
     constructor(){
-      this.routePrefix = "<#=c.RoutePrefix != null ? c.RoutePrefix.Prefix : "" #>";
+      this.routePrefix = "<#=c.RoutePrefix != null ? c.RoutePrefix.Prefix : "" #>" + "/";
     }
 
     <#
     foreach(var call in c.Calls) {
     #>
 
-    <#=call.CallMethod.Name#> ( <#=call.GetTypeScriptParameters()#> ) {
-      var route = this.routePrefix + <#=call.GenerateRouteConcat()#>;
-      var obj = <#=call.GetBodyParameter()#>;
+    <#=call.CallMethod.Name#> ( <#=GenerateCallParameters(call)#> ) {
+      var route = this.routePrefix + <#=GenerateCallRouteConcat(call)#>;
+      var obj = <#=GetCallBodyParameter(call)#>;
 
-      return <#=call.GenerateJQueryCall("route","obj") #> ;
+      return <#=GenerateRESTCall(call,"route","obj") #> ;
     }
 
     <#

@@ -29,10 +29,24 @@ namespace TypeScriptTools_Test.Sample
       return null;
     }
 
-    [Route("parameter/{parameter}")]
+    [Route("parameter/{parameter}/other")]
     [HttpPost]
     public String UriAndBodyParameterHttpPost(String parameter, [FromBody] IInterface bodyParam) {
       return null;
     }
+
+    [Route("IInterface")]
+    [HttpGet]
+    public IInterface ReturnIInterface() {
+      return null;
+    }
+
+    [Route("BaseClass")]
+    [HttpGet]
+    public BaseClass ReturnBaseClass() {
+      return null;
+    }
+
+    
   }
 }

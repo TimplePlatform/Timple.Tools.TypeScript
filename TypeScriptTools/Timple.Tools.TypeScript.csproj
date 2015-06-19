@@ -57,65 +57,57 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tools\TypeScript\ITypeScriptTranslator.cs" />
     <Compile Include="Tools\TypeScript\ApiService.cs" />
     <Compile Include="Tools\TypeScript\ApiServiceCall.cs" />
     <Compile Include="Tools\TypeScript\ApiServiceCallParameter.cs" />
     <Compile Include="Tools\TypeScript\ApiControllerClientBuilder.cs" />
-    <Compile Include="Tools\TypeScript\Translation\TypeScriptClassTemplate.cs">
+    <Compile Include="Tools\TypeScript\ITypeScriptPipelineTranslator.cs" />
+    <Compile Include="Tools\TypeScript\Translators\DictionaryTranslator.cs" />
+    <Compile Include="Tools\TypeScript\Translators\PropertiesOnlyTemplate.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>TypeScriptClassTemplate.tt</DependentUpon>
+      <DependentUpon>PropertiesOnlyTemplate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Tools\TypeScript\Translation\TypeScriptControllersTemplate.cs">
+    <Compile Include="Tools\TypeScript\Translators\PropertiesOnlyTemplatePartial.cs" />
+    <Compile Include="Tools\TypeScript\Translators\ApiControllerTemplate.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>TypeScriptControllersTemplate.tt</DependentUpon>
+      <DependentUpon>ApiControllerTemplate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Tools\TypeScript\Translation\TypeScriptEnumTemplate.cs">
+    <Compile Include="Tools\TypeScript\Translators\TypeScriptControllersFileHeaderTemplate.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>TypeScriptEnumTemplate.tt</DependentUpon>
+      <DependentUpon>TypeScriptControllersFileHeaderTemplate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Tools\TypeScript\Translation\TypeScriptExtensions.cs" />
-    <Compile Include="Tools\TypeScript\Translation\TypeScriptFileHeaderTemplate.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TypeScriptFileHeaderTemplate.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Tools\TypeScript\Translators\ApiControllerTemplatePartial.cs" />
+    <Compile Include="Tools\TypeScript\Translators\ApiControllerTranslator.cs" />
+    <Compile Include="Tools\TypeScript\Translators\ArrayTranslator.cs" />
+    <Compile Include="Tools\TypeScript\Translators\BooleanTranslator.cs" />
+    <Compile Include="Tools\TypeScript\Translators\DefaultPipelineTranslator.cs" />
+    <Compile Include="Tools\TypeScript\Translators\ListTranslator.cs" />
+    <Compile Include="Tools\TypeScript\Translators\NumericTranslator.cs" />
+    <Compile Include="Tools\TypeScript\Translators\StringTranslator.cs" />
     <Compile Include="Tools\TypeScript\TypeScriptDirectoryAutoCompiler.cs" />
-    <Compile Include="Tools\TypeScript\Translation\TypeScriptInterfaceTemplate.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TypeScriptInterfaceTemplate.tt</DependentUpon>
-    </Compile>
     <Compile Include="Tools\TypeScript\TypeScriptNativeCompilerException.cs" />
-    <Compile Include="Tools\TypeScript\TypeScriptTranslator.cs" />
-    <Compile Include="Tools\TypeScript\Translation\TypeScriptTypeTemplatePartial.cs" />
+    <Compile Include="Tools\TypeScript\TypeScriptPipelineTranslator.cs" />
     <Compile Include="Tools\TypeScript\TypeScriptNativeCompiler.cs" />
     <Compile Include="Tools\TypeScript\TypeScriptNativeCompilerConfiguration.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="Timple.Tools.TypeScript.nuspec" />
-    <None Include="Tools\TypeScript\Translation\TypeScriptClassTemplate.tt">
+    <None Include="Tools\TypeScript\Translators\PropertiesOnlyTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>TypeScriptClassTemplate.cs</LastGenOutput>
+      <LastGenOutput>PropertiesOnlyTemplate.cs</LastGenOutput>
     </None>
-    <None Include="Tools\TypeScript\Translation\TypeScriptControllersTemplate.tt">
+    <None Include="Tools\TypeScript\Translators\ApiControllerTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>TypeScriptControllersTemplate.cs</LastGenOutput>
+      <LastGenOutput>ApiControllerTemplate.cs</LastGenOutput>
     </None>
-    <None Include="Tools\TypeScript\Translation\TypeScriptEnumTemplate.tt">
+    <None Include="Tools\TypeScript\Translators\TypeScriptControllersFileHeaderTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>TypeScriptEnumTemplate.cs</LastGenOutput>
-    </None>
-    <None Include="Tools\TypeScript\Translation\TypeScriptFileHeaderTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>TypeScriptFileHeaderTemplate.cs</LastGenOutput>
-    </None>
-    <None Include="Tools\TypeScript\Translation\TypeScriptInterfaceTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>TypeScriptInterfaceTemplate.cs</LastGenOutput>
+      <LastGenOutput>TypeScriptControllersFileHeaderTemplate.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>

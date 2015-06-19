@@ -20,8 +20,8 @@ namespace TypeScriptTools_Test
     [TestMethod]
     public void TranslateType() {
       using (var sw = new StreamWriter(File.Create(tsFile))) {
-        TypeScriptTranslator translator = new TypeScriptTranslator(sw);
-        translator.TranslateType(typeof(Class));
+        ITypeScriptTranslator translator = new TypeScriptPipelineTranslator(sw);
+        translator.Translate(typeof(SampleController));
         sw.Flush();
       }
     }
@@ -35,8 +35,8 @@ namespace TypeScriptTools_Test
     [TestMethod]
     public void TranslateController() {
       using (var sw = new StreamWriter(File.Create(tsFile))) {
-        TypeScriptTranslator translator = new TypeScriptTranslator(sw);
-        translator.TranslateController(typeof(SampleController));
+        ITypeScriptTranslator translator = new TypeScriptPipelineTranslator(sw);
+        translator.Translate(typeof(SampleController));
         sw.Flush();
       }
     }

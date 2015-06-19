@@ -12,16 +12,16 @@ namespace Timple.Tools.TypeScript
 {
   public class ApiControllerClientBuilder : IDisposable
   {
-    private readonly TypeScriptTranslator translator;
+    private readonly ITypeScriptTranslator translator;
     private readonly StreamWriter stream;
 
-    public ApiControllerClientBuilder(TypeScriptTranslator translator) {
+    public ApiControllerClientBuilder(ITypeScriptTranslator translator) {
       this.translator = translator;
     }
 
     public ApiControllerClientBuilder(String filePath) {
       stream = new StreamWriter(File.Create(filePath));
-      translator = new TypeScriptTranslator(stream);
+      translator = new TypeScriptPipelineTranslator(stream);
     }
 
     public void GenerateForAssemblies(Assembly[] assemblies) {
@@ -36,7 +36,7 @@ namespace Timple.Tools.TypeScript
         if (!tp.IsSubclassOf(typeof(ApiController)))
           continue;
 
-        translator.TranslateController(tp);
+        translator.Translate(tp);
       }
     }
 

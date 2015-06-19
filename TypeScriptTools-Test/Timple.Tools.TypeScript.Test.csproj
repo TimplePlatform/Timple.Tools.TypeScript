@@ -70,6 +70,7 @@
     <Compile Include="Sample\BaseClass.cs" />
     <Compile Include="Sample\Class.cs" />
     <Compile Include="Sample\eSampleEnum.cs" />
+    <Compile Include="Sample\GenericClass.cs" />
     <Compile Include="Sample\IInterface.cs" />
     <Compile Include="Sample\SampleController.cs" />
     <Compile Include="TypeScriptTranslationTest.cs" />

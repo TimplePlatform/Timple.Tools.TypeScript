@@ -27,6 +27,9 @@ namespace Timple.Tools.TypeScript
 
 
       foreach (var p in parms) {
+        if (p.ParameterType.Namespace == "System.Net.Http")
+          continue;
+
         ApiServiceCallParameter callParam = new ApiServiceCallParameter(this, p);
         Parameters.Add(callParam);
 

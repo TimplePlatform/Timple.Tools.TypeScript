@@ -7,20 +7,21 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Timple.Tools.TypeScript.Translation
+namespace Timple.Tools.TypeScript.Translators
 {
     using System.Linq;
     using System.Text;
     using System.Collections.Generic;
+    using System.Reflection;
     using System;
     
     /// <summary>
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptControllersTemplate.tt"
+    #line 1 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\PropertiesOnlyTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "12.0.0.0")]
-    public partial class TypeScriptControllersTemplate : TypeScriptControllersTemplateBase
+    public partial class PropertiesOnlyTemplate : PropertiesOnlyTemplateBase
     {
 #line hidden
         /// <summary>
@@ -28,134 +29,288 @@ namespace Timple.Tools.TypeScript.Translation
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("\r\n");
+            this.Write("\r\n/**\r\n * Type: ");
             
-            #line 7 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptControllersTemplate.tt"
-
-var c = Service;
-
-            
-            #line default
-            #line hidden
-            this.Write("/**\r\n * Controller: ");
-            
-            #line 11 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptControllersTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(c.ControllerType.Name));
+            #line 9 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\PropertiesOnlyTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(TheType.FullName));
             
             #line default
             #line hidden
             this.Write("\r\n * Assembly: ");
             
-            #line 12 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptControllersTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(c.ControllerType.Assembly.FullName));
+            #line 10 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\PropertiesOnlyTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(TheType.Assembly.FullName));
             
             #line default
             #line hidden
             this.Write("\r\n */\r\n");
             
-            #line 14 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptControllersTemplate.tt"
+            #line 12 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\PropertiesOnlyTemplate.tt"
 
-if (!String.IsNullOrEmpty(c.ControllerType.Namespace)) {
+if(!String.IsNullOrEmpty(TheType.Namespace)){
 
             
             #line default
             #line hidden
             this.Write("module ");
             
-            #line 17 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptControllersTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(c.ControllerType.Namespace));
+            #line 15 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\PropertiesOnlyTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(TheType.Namespace));
             
             #line default
             #line hidden
             this.Write(" {\r\n");
             
-            #line 18 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptControllersTemplate.tt"
+            #line 16 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\PropertiesOnlyTemplate.tt"
+
+}
+
+if(TheType.IsEnum){
+
+            
+            #line default
+            #line hidden
+            this.Write("export enum ");
+            
+            #line 21 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\PropertiesOnlyTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(TypeName));
+            
+            #line default
+            #line hidden
+            this.Write(" {\r\n");
+            
+            #line 22 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\PropertiesOnlyTemplate.tt"
+
+var tp = TheType;
+var names = Enum.GetNames(tp);
+var values = Enum.GetValues(tp);
+
+  for (var i = 0; i < names.Length; i++) {
+
+            
+            #line default
+            #line hidden
+            this.Write("  ");
+            
+            #line 29 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\PropertiesOnlyTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(names[i]));
+            
+            #line default
+            #line hidden
+            this.Write(" = ");
+            
+            #line 29 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\PropertiesOnlyTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Enum.Format(tp, values.GetValue(i), "D")));
+            
+            #line default
+            #line hidden
+            this.Write(",\r\n");
+            
+            #line 30 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\PropertiesOnlyTemplate.tt"
+
+  }
+
+}else if(TheType.IsClass) {
+
+            
+            #line default
+            #line hidden
+            this.Write("  \r\n  export class ");
+            
+            #line 35 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\PropertiesOnlyTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(TypeName));
+            
+            #line default
+            #line hidden
+            this.Write(" ");
+            
+            #line 35 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\PropertiesOnlyTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Extends));
+            
+            #line default
+            #line hidden
+            this.Write(" ");
+            
+            #line 35 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\PropertiesOnlyTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Implements));
+            
+            #line default
+            #line hidden
+            this.Write(" {\r\n");
+            
+            #line 36 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\PropertiesOnlyTemplate.tt"
+
+  var props = TheType.GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.DeclaredOnly);
+  foreach(var p in props) { 
+
+            
+            #line default
+            #line hidden
+            this.Write("    private _");
+            
+            #line 40 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\PropertiesOnlyTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(p.Name));
+            
+            #line default
+            #line hidden
+            this.Write(" : ");
+            
+            #line 40 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\PropertiesOnlyTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Translator.Translate(p.PropertyType)));
+            
+            #line default
+            #line hidden
+            this.Write(";\r\n");
+            
+            #line 41 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\PropertiesOnlyTemplate.tt"
+
+  }
+
+            
+            #line default
+            #line hidden
+            this.Write("\r\n");
+            
+            #line 45 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\PropertiesOnlyTemplate.tt"
+
+  foreach(var p in props) { 
+    if(p.CanRead) { 
+
+            
+            #line default
+            #line hidden
+            this.Write("    public get ");
+            
+            #line 49 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\PropertiesOnlyTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(p.Name));
+            
+            #line default
+            #line hidden
+            this.Write("() { \r\n      return this._");
+            
+            #line 50 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\PropertiesOnlyTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(p.Name));
+            
+            #line default
+            #line hidden
+            this.Write(";\r\n    }\r\n\r\n");
+            
+            #line 53 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\PropertiesOnlyTemplate.tt"
+ 
+    } 
+
+    if(p.CanWrite) { 
+
+            
+            #line default
+            #line hidden
+            this.Write("    public set ");
+            
+            #line 58 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\PropertiesOnlyTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(p.Name));
+            
+            #line default
+            #line hidden
+            this.Write("(value) {\r\n      this._");
+            
+            #line 59 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\PropertiesOnlyTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(p.Name));
+            
+            #line default
+            #line hidden
+            this.Write(" = value;\r\n    }\r\n\r\n");
+            
+            #line 62 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\PropertiesOnlyTemplate.tt"
+  
+    }
+  } 
+
+            
+            #line default
+            #line hidden
+            
+            #line 66 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\PropertiesOnlyTemplate.tt"
+
+} else {
+
+            
+            #line default
+            #line hidden
+            this.Write("  export interface ");
+            
+            #line 69 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\PropertiesOnlyTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(TypeName));
+            
+            #line default
+            #line hidden
+            this.Write(" ");
+            
+            #line 69 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\PropertiesOnlyTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Extends));
+            
+            #line default
+            #line hidden
+            this.Write(" ");
+            
+            #line 69 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\PropertiesOnlyTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Implements));
+            
+            #line default
+            #line hidden
+            this.Write(" {\r\n");
+            
+            #line 70 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\PropertiesOnlyTemplate.tt"
+
+  var props = TheType.GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.DeclaredOnly);
+  foreach(var p in props) { 
+
+            
+            #line default
+            #line hidden
+            this.Write("    ");
+            
+            #line 74 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\PropertiesOnlyTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(p.Name));
+            
+            #line default
+            #line hidden
+            this.Write(" : ");
+            
+            #line 74 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\PropertiesOnlyTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Translator.Translate(p.PropertyType)));
+            
+            #line default
+            #line hidden
+            this.Write(";\r\n");
+            
+            #line 75 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\PropertiesOnlyTemplate.tt"
+
+  }
+
+            
+            #line default
+            #line hidden
+            this.Write("\r\n\r\n");
+            
+            #line 80 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\PropertiesOnlyTemplate.tt"
 
 }
 
             
             #line default
             #line hidden
-            this.Write("\r\n  export class ");
-            
-            #line 22 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptControllersTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(c.ControllerType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(" {\r\n    private routePrefix: string;\r\n\r\n    constructor(){\r\n      this.routePrefi" +
-                    "x = \"");
-            
-            #line 26 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptControllersTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(c.RoutePrefix != null ? c.RoutePrefix.Prefix : ""));
-            
-            #line default
-            #line hidden
-            this.Write("\";\r\n    }\r\n\r\n    ");
-            
-            #line 29 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptControllersTemplate.tt"
-
-    foreach(var call in c.Calls) {
-    
-            
-            #line default
-            #line hidden
-            this.Write("\r\n    ");
-            
-            #line 33 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptControllersTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(call.CallMethod.Name));
-            
-            #line default
-            #line hidden
-            this.Write(" ( ");
-            
-            #line 33 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptControllersTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(call.GetTypeScriptParameters()));
-            
-            #line default
-            #line hidden
-            this.Write(" ) {\r\n      var route = this.routePrefix + ");
-            
-            #line 34 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptControllersTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(call.GenerateRouteConcat()));
-            
-            #line default
-            #line hidden
-            this.Write(";\r\n      var obj = ");
-            
-            #line 35 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptControllersTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(call.GetBodyParameter()));
-            
-            #line default
-            #line hidden
-            this.Write(";\r\n\r\n      return ");
-            
-            #line 37 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptControllersTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(call.GenerateJQueryCall("route","obj")));
-            
-            #line default
-            #line hidden
-            this.Write(" ;\r\n    }\r\n\r\n    ");
-            
-            #line 40 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptControllersTemplate.tt"
-
-    }
-    
-            
-            #line default
-            #line hidden
             this.Write("  }\r\n\r\n");
             
-            #line 45 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptControllersTemplate.tt"
+            #line 85 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\PropertiesOnlyTemplate.tt"
 
-if (!String.IsNullOrEmpty(c.ControllerType.Namespace)) {
+if(!String.IsNullOrEmpty(TheType.Namespace)){
 
             
             #line default
             #line hidden
             this.Write("}\r\n");
             
-            #line 49 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptControllersTemplate.tt"
+            #line 89 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\PropertiesOnlyTemplate.tt"
 
 }
 
@@ -173,7 +328,7 @@ if (!String.IsNullOrEmpty(c.ControllerType.Namespace)) {
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "12.0.0.0")]
-    public class TypeScriptControllersTemplateBase
+    public class PropertiesOnlyTemplateBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;

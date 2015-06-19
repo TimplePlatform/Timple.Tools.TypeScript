@@ -8,10 +8,16 @@
  */
 
 interface IjQueryPartial {
-  postJSON(url:string,body:any);
-  getJSON(url:string);
-  putJSON(url:string,body:any);
-  deleteJSON(url:string);
+  postJSON(url:string,body:any) :any;
+  getJSON(url:string) :any;
+  putJSON(url:string,body:any) :any;
+  deleteJSON(url:string) :any;
 }
 
 declare var jQuery: IjQueryPartial;
+
+module System.Collections {
+  export class List<T> extends Array<T>{
+  }
+
+}

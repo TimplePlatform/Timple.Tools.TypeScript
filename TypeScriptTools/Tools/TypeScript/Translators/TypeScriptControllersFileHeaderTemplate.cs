@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Timple.Tools.TypeScript.Translation
+namespace Timple.Tools.TypeScript.Translators
 {
     using System.Linq;
     using System.Text;
@@ -18,9 +18,9 @@ namespace Timple.Tools.TypeScript.Translation
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "c:\users\everton.araujo\documents\visual studio 2013\Projects\TypeScriptTools\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptEnumTemplate.tt"
+    #line 1 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\TypeScriptControllersFileHeaderTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "12.0.0.0")]
-    public partial class TypeScriptEnumTemplate : TypeScriptEnumTemplateBase
+    public partial class TypeScriptControllersFileHeaderTemplate : TypeScriptControllersFileHeaderTemplateBase
     {
 #line hidden
         /// <summary>
@@ -28,68 +28,30 @@ namespace Timple.Tools.TypeScript.Translation
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("\r\n/**\r\n * Enum: ");
+            this.Write("/**\r\n * Generated at ");
             
-            #line 8 "c:\users\everton.araujo\documents\visual studio 2013\Projects\TypeScriptTools\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptEnumTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(TheType.FullName));
-            
-            #line default
-            #line hidden
-            this.Write("\r\n * Assembly: ");
-            
-            #line 9 "c:\users\everton.araujo\documents\visual studio 2013\Projects\TypeScriptTools\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptEnumTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(TheType.Assembly.FullName));
+            #line 7 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\TypeScriptControllersFileHeaderTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(DateTime.Now.ToString()));
             
             #line default
             #line hidden
-            this.Write("\r\n */\r\nmodule ");
-            
-            #line 11 "c:\users\everton.araujo\documents\visual studio 2013\Projects\TypeScriptTools\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptEnumTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(TheType.Namespace));
-            
-            #line default
-            #line hidden
-            this.Write(" {\r\n  \r\n  export enum ");
-            
-            #line 13 "c:\users\everton.araujo\documents\visual studio 2013\Projects\TypeScriptTools\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptEnumTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(TheType.Name));
-            
-            #line default
-            #line hidden
-            this.Write(" {\r\n");
-            
-            #line 14 "c:\users\everton.araujo\documents\visual studio 2013\Projects\TypeScriptTools\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptEnumTemplate.tt"
- 
-var values = TheType.GetValidTypeScriptEnumValues();
-foreach(var val in values) { 
+            this.Write(@"
+ */
 
-            
-            #line default
-            #line hidden
-            this.Write("    ");
-            
-            #line 18 "c:\users\everton.araujo\documents\visual studio 2013\Projects\TypeScriptTools\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptEnumTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(val.Item1));
-            
-            #line default
-            #line hidden
-            this.Write(" = ");
-            
-            #line 18 "c:\users\everton.araujo\documents\visual studio 2013\Projects\TypeScriptTools\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptEnumTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(val.Item2));
-            
-            #line default
-            #line hidden
-            this.Write(",\r\n");
-            
-            #line 19 "c:\users\everton.araujo\documents\visual studio 2013\Projects\TypeScriptTools\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptEnumTemplate.tt"
-
+interface IjQueryPartial {
+  postJSON(url:string,body:any) :any;
+  getJSON(url:string) :any;
+  putJSON(url:string,body:any) :any;
+  deleteJSON(url:string) :any;
 }
 
-            
-            #line default
-            #line hidden
-            this.Write("  }\r\n}\r\n");
+declare var jQuery: IjQueryPartial;
+
+module System.Collections {
+  export class List<T> extends Array<T>{
+  }
+
+}");
             return this.GenerationEnvironment.ToString();
         }
     }
@@ -101,7 +63,7 @@ foreach(var val in values) {
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "12.0.0.0")]
-    public class TypeScriptEnumTemplateBase
+    public class TypeScriptControllersFileHeaderTemplateBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;

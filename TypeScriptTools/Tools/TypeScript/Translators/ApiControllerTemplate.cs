@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Timple.Tools.TypeScript.Translation
+namespace Timple.Tools.TypeScript.Translators
 {
     using System.Linq;
     using System.Text;
@@ -18,9 +18,9 @@ namespace Timple.Tools.TypeScript.Translation
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "c:\users\everton.araujo\documents\visual studio 2013\Projects\TypeScriptTools\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptInterfaceTemplate.tt"
+    #line 1 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\ApiControllerTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "12.0.0.0")]
-    public partial class TypeScriptInterfaceTemplate : TypeScriptInterfaceTemplateBase
+    public partial class ApiControllerTemplate : ApiControllerTemplateBase
     {
 #line hidden
         /// <summary>
@@ -28,73 +28,140 @@ namespace Timple.Tools.TypeScript.Translation
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("\r\n/**\r\n * Interface: ");
+            this.Write("\r\n");
             
-            #line 8 "c:\users\everton.araujo\documents\visual studio 2013\Projects\TypeScriptTools\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptInterfaceTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(TheType.FullName));
+            #line 7 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\ApiControllerTemplate.tt"
+
+var c = Service;
+
+            
+            #line default
+            #line hidden
+            this.Write("/**\r\n * Controller: ");
+            
+            #line 11 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\ApiControllerTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(c.ControllerType.Name));
             
             #line default
             #line hidden
             this.Write("\r\n * Assembly: ");
             
-            #line 9 "c:\users\everton.araujo\documents\visual studio 2013\Projects\TypeScriptTools\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptInterfaceTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(TheType.Assembly.FullName));
+            #line 12 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\ApiControllerTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(c.ControllerType.Assembly.FullName));
             
             #line default
             #line hidden
-            this.Write("\r\n */\r\nmodule ");
+            this.Write("\r\n */\r\n");
             
-            #line 11 "c:\users\everton.araujo\documents\visual studio 2013\Projects\TypeScriptTools\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptInterfaceTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(TheType.Namespace));
-            
-            #line default
-            #line hidden
-            this.Write(" {\r\n  \r\n  export interface ");
-            
-            #line 13 "c:\users\everton.araujo\documents\visual studio 2013\Projects\TypeScriptTools\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptInterfaceTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(TheType.Name));
+            #line 14 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\ApiControllerTemplate.tt"
+
+if (!String.IsNullOrEmpty(c.ControllerType.Namespace)) {
+
             
             #line default
             #line hidden
-            this.Write(" ");
+            this.Write("module ");
             
-            #line 13 "c:\users\everton.araujo\documents\visual studio 2013\Projects\TypeScriptTools\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptInterfaceTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(TheType.GetTypeScriptExtends()));
+            #line 17 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\ApiControllerTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(c.ControllerType.Namespace));
             
             #line default
             #line hidden
             this.Write(" {\r\n");
             
-            #line 14 "c:\users\everton.araujo\documents\visual studio 2013\Projects\TypeScriptTools\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptInterfaceTemplate.tt"
- 
-var props = TheType.GetValidTypeScriptProperties();
-foreach(var p in props) { 
+            #line 18 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\ApiControllerTemplate.tt"
+
+}
 
             
             #line default
             #line hidden
-            this.Write("    ");
+            this.Write("\r\n  export class ");
             
-            #line 18 "c:\users\everton.araujo\documents\visual studio 2013\Projects\TypeScriptTools\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptInterfaceTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(p.Name));
-            
-            #line default
-            #line hidden
-            this.Write(" : ");
-            
-            #line 18 "c:\users\everton.araujo\documents\visual studio 2013\Projects\TypeScriptTools\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptInterfaceTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(p.PropertyType.ToTypeScriptName()));
+            #line 22 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\ApiControllerTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(c.ControllerType.Name));
             
             #line default
             #line hidden
-            this.Write(";\r\n");
+            this.Write(" {\r\n    private routePrefix: string;\r\n\r\n    constructor(){\r\n      this.routePrefi" +
+                    "x = \"");
             
-            #line 19 "c:\users\everton.araujo\documents\visual studio 2013\Projects\TypeScriptTools\TypeScriptTools\Tools\TypeScript\Translation\TypeScriptInterfaceTemplate.tt"
- } 
+            #line 26 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\ApiControllerTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(c.RoutePrefix != null ? c.RoutePrefix.Prefix : ""));
             
             #line default
             #line hidden
-            this.Write("  }\r\n\r\n}\r\n");
+            this.Write("\" + \"/\";\r\n    }\r\n\r\n    ");
+            
+            #line 29 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\ApiControllerTemplate.tt"
+
+    foreach(var call in c.Calls) {
+    
+            
+            #line default
+            #line hidden
+            this.Write("\r\n    ");
+            
+            #line 33 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\ApiControllerTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(call.CallMethod.Name));
+            
+            #line default
+            #line hidden
+            this.Write(" ( ");
+            
+            #line 33 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\ApiControllerTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(GenerateCallParameters(call)));
+            
+            #line default
+            #line hidden
+            this.Write(" ) {\r\n      var route = this.routePrefix + ");
+            
+            #line 34 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\ApiControllerTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(GenerateCallRouteConcat(call)));
+            
+            #line default
+            #line hidden
+            this.Write(";\r\n      var obj = ");
+            
+            #line 35 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\ApiControllerTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetCallBodyParameter(call)));
+            
+            #line default
+            #line hidden
+            this.Write(";\r\n\r\n      return ");
+            
+            #line 37 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\ApiControllerTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(GenerateRESTCall(call,"route","obj")));
+            
+            #line default
+            #line hidden
+            this.Write(" ;\r\n    }\r\n\r\n    ");
+            
+            #line 40 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\ApiControllerTemplate.tt"
+
+    }
+    
+            
+            #line default
+            #line hidden
+            this.Write("  }\r\n\r\n");
+            
+            #line 45 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\ApiControllerTemplate.tt"
+
+if (!String.IsNullOrEmpty(c.ControllerType.Namespace)) {
+
+            
+            #line default
+            #line hidden
+            this.Write("}\r\n");
+            
+            #line 49 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\ApiControllerTemplate.tt"
+
+}
+
+            
+            #line default
+            #line hidden
             return this.GenerationEnvironment.ToString();
         }
     }
@@ -106,7 +173,7 @@ foreach(var p in props) {
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "12.0.0.0")]
-    public class TypeScriptInterfaceTemplateBase
+    public class ApiControllerTemplateBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;

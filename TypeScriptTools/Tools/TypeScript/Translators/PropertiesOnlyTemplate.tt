@@ -1,0 +1,91 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Reflection" #>
+
+/**
+ * Type: <#=TheType.FullName#>
+ * Assembly: <#=TheType.Assembly.FullName#>
+ */
+<#
+if(!String.IsNullOrEmpty(TheType.Namespace)){
+#>
+module <#=TheType.Namespace#> {
+<#
+}
+
+if(TheType.IsEnum){
+#>
+export enum <#=TypeName#> {
+<#
+var tp = TheType;
+var names = Enum.GetNames(tp);
+var values = Enum.GetValues(tp);
+
+  for (var i = 0; i < names.Length; i++) {
+#>
+  <#=names[i]#> = <#=Enum.Format(tp, values.GetValue(i), "D")#>,
+<#
+  }
+
+}else if(TheType.IsClass) {
+#>  
+  export class <#=TypeName#> <#=Extends#> <#=Implements#> {
+<#
+  var props = TheType.GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.DeclaredOnly);
+  foreach(var p in props) { 
+#>
+    private _<#=p.Name#> : <#=Translator.Translate(p.PropertyType)#>;
+<#
+  }
+#>
+
+<#
+  foreach(var p in props) { 
+    if(p.CanRead) { 
+#>
+    public get <#=p.Name#>() { 
+      return this._<#=p.Name#>;
+    }
+
+<# 
+    } 
+
+    if(p.CanWrite) { 
+#>
+    public set <#=p.Name#>(value) {
+      this._<#=p.Name#> = value;
+    }
+
+<#  
+    }
+  } 
+#>
+<#
+} else {
+#>
+  export interface <#=TypeName#> <#=Extends#> <#=Implements#> {
+<#
+  var props = TheType.GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.DeclaredOnly);
+  foreach(var p in props) { 
+#>
+    <#=p.Name#> : <#=Translator.Translate(p.PropertyType)#>;
+<#
+  }
+#>
+
+
+<#
+}
+#>
+  }
+
+<#
+if(!String.IsNullOrEmpty(TheType.Namespace)){
+#>
+}
+<#
+}
+#>
