@@ -8,8 +8,8 @@ You can expose POCO objects to TypeScript
 
 ```CSharp
 using (var sw = new StreamWriter(File.Create("test.ts"))) {
-    TypeScriptTranslator translator = new TypeScriptTranslator(sw);
-    translator.TranslateType(typeof(MyClass));
+    ITypeScriptTranslator translator = new TypeScriptPipelineTranslator(sw);
+    translator.Translate(typeof(MyClass));
 }
 ```
 
@@ -19,15 +19,15 @@ This will generate a test.ts file with `MyClass` object fields translated to it,
 You can generate TypeScript Client for your WebApi Controllers
 ```CSharp
 using (var sw = new StreamWriter(File.Create("test.ts"))) {
-    TypeScriptTranslator translator = new TypeScriptTranslator(sw);
-    translator.TranslateController(typeof(MyController));
+    ITypeScriptTranslator translator = new TypeScriptPipelineTranslator(sw);
+    translator.Translate(typeof(MyController));
 }
 ```
 This will generate a test.ts file exposing `MyController` routes.
 You can also use `ApiControllerClientBuilder` to generate for assemblies.
 ```CSharp
 using (var sw = new StreamWriter(File.Create("test.ts"))) {
-    TypeScriptTranslator translator = new TypeScriptTranslator(sw);
+    ITypeScriptTranslator translator = new TypeScriptPipelineTranslator(sw);
     ApiControllerClientBuilder clientBuilder = new ApiControllerClientBuilder(translator);
     clientBuilder.GenerateForAssemblies(AppDomain.CurrentDomain.GetAssemblies());
 }
