@@ -35,23 +35,8 @@ namespace Timple.Tools.TypeScript.Translators
             
             #line default
             #line hidden
-            this.Write(@"
- */
-
-interface IjQueryPartial {
-  postJSON(url:string,body:any) :any;
-  getJSON(url:string) :any;
-  putJSON(url:string,body:any) :any;
-  deleteJSON(url:string) :any;
-}
-
-declare var jQuery: IjQueryPartial;
-
-module System.Collections {
-  export class List<T> extends Array<T>{
-  }
-
-}");
+            this.Write("\r\n */\r\n /// <reference path=\"scripts/timple-ajax.ts\" />\r\n /// <reference path=\"sc" +
+                    "ripts/typings/jquery/jquery.d.ts\" />");
             return this.GenerationEnvironment.ToString();
         }
     }

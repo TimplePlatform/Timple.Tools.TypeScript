@@ -9,6 +9,7 @@ namespace Timple.Tools.TypeScript.Translators
 {
   public class ApiControllerTranslator : ITypeScriptPipelineTranslator
   {
+    private bool headerIncluded;
     public ApiControllerTranslator() {
 
     }
@@ -18,6 +19,11 @@ namespace Timple.Tools.TypeScript.Translators
     }
 
     public string Translate(Type tp, TypeScriptPipelineTranslator translator) {
+      if (!headerIncluded) {
+        headerIncluded = true;
+        translator.Writer.Write(new TypeScriptControllersFileHeaderTemplate().TransformText());
+      }
+
       ApiService svc = new ApiService(tp);
       ApiControllerTemplate template = new ApiControllerTemplate();
       template.Service = svc;

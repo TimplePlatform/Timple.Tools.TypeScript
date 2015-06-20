@@ -6,10 +6,7 @@ using System.Threading.Tasks;
 
 namespace TypeScriptTools_Test.Sample
 {
-  public interface IInterface : IBaseInterface
+  public interface IBaseInterface
   {
-    String OnlyGet { get; }
-    String OnlySet { set; }
-    String GetAndSet { get; set; }
   }
 }

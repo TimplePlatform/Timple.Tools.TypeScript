@@ -6,6 +6,7 @@
 <#@ import namespace="System.Reflection" #>
 
 /**
+ * Calling Type: <#=CallingTypeName#>
  * Type: <#=TheType.FullName#>
  * Assembly: <#=TheType.Assembly.FullName#>
  */
@@ -66,7 +67,7 @@ var values = Enum.GetValues(tp);
 <#
 } else {
 #>
-  export interface <#=TypeName#> <#=Extends#> <#=Implements#> {
+  export interface <#=TypeName#> <#=Implements#> {
 <#
   var props = TheType.GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.DeclaredOnly);
   foreach(var p in props) { 

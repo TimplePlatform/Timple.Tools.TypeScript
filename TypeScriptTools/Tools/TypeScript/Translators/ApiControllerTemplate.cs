@@ -91,12 +91,12 @@ if (!String.IsNullOrEmpty(c.ControllerType.Namespace)) {
             
             #line default
             #line hidden
-            this.Write("\" + \"/\";\r\n    }\r\n\r\n    ");
+            this.Write("\" + \"/\";\r\n    }\r\n\r\n");
             
             #line 29 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\ApiControllerTemplate.tt"
 
-    foreach(var call in c.Calls) {
-    
+foreach(var call in c.Calls) {
+
             
             #line default
             #line hidden
@@ -114,7 +114,14 @@ if (!String.IsNullOrEmpty(c.ControllerType.Namespace)) {
             
             #line default
             #line hidden
-            this.Write(" ) {\r\n      var route = this.routePrefix + ");
+            this.Write(" ) ");
+            
+            #line 33 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\ApiControllerTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(GenerateCallReturn(call)));
+            
+            #line default
+            #line hidden
+            this.Write(" {\r\n      var route = this.routePrefix + ");
             
             #line 34 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\ApiControllerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GenerateCallRouteConcat(call)));
@@ -135,18 +142,18 @@ if (!String.IsNullOrEmpty(c.ControllerType.Namespace)) {
             
             #line default
             #line hidden
-            this.Write(" ;\r\n    }\r\n\r\n    ");
+            this.Write(" ;\r\n    }\r\n\r\n");
             
             #line 40 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\ApiControllerTemplate.tt"
 
-    }
-    
+}
+
             
             #line default
             #line hidden
-            this.Write("  }\r\n\r\n");
+            this.Write("\r\n  }\r\n\r\n");
             
-            #line 45 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\ApiControllerTemplate.tt"
+            #line 46 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\ApiControllerTemplate.tt"
 
 if (!String.IsNullOrEmpty(c.ControllerType.Namespace)) {
 
@@ -155,7 +162,7 @@ if (!String.IsNullOrEmpty(c.ControllerType.Namespace)) {
             #line hidden
             this.Write("}\r\n");
             
-            #line 49 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\ApiControllerTemplate.tt"
+            #line 50 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\ApiControllerTemplate.tt"
 
 }
 

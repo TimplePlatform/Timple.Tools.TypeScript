@@ -19,6 +19,12 @@ namespace Timple.Tools.TypeScript.Translators
     public ITypeScriptTranslator Translator { get; set; }
     public String TypeName { get; set; }
     public bool SkipImplements { get; set; }
+    public String CallingTypeName {
+      get {
+        var last = Translator.TranslatingStack.Skip(Translator.TranslatingStack.Count - 1).FirstOrDefault();
+        return last != null ? last.FullName : String.Empty;
+      }
+    }
 
     public String Extends {
       get {
@@ -45,7 +51,7 @@ namespace Timple.Tools.TypeScript.Translators
         if (validInters.Count() == 0)
           return String.Empty;
 
-        return "implements " + String.Join(", ", validInters);
+        return (TheType.IsClass ? "implements " : "extends ") + String.Join(", ", validInters);
       }
     }
   }

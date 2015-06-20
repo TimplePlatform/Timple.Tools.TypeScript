@@ -63,7 +63,11 @@
     <Compile Include="Tools\TypeScript\ApiServiceCallParameter.cs" />
     <Compile Include="Tools\TypeScript\ApiControllerClientBuilder.cs" />
     <Compile Include="Tools\TypeScript\ITypeScriptPipelineTranslator.cs" />
+    <Compile Include="Tools\TypeScript\Translators\AsyncTypesTranslator.cs" />
+    <Compile Include="Tools\TypeScript\Translators\DateTimeTranslator.cs" />
     <Compile Include="Tools\TypeScript\Translators\DictionaryTranslator.cs" />
+    <Compile Include="Tools\TypeScript\Translators\GuidTranslator.cs" />
+    <Compile Include="Tools\TypeScript\Translators\HttpObjectsTranslator.cs" />
     <Compile Include="Tools\TypeScript\Translators\PropertiesOnlyTemplate.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -112,6 +116,14 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\timple-ajax.ts">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\typings\jquery\jquery.d.ts">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

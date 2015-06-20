@@ -11,5 +11,7 @@ namespace Timple.Tools.TypeScript
   {
     StreamWriter Writer { get; }
     String Translate(Type tp);
+    void RegisterType(String fullName, String typeScriptName);
+    Stack<Type> TranslatingStack { get; }
   }
 }

@@ -27,6 +27,9 @@ namespace Timple.Tools.TypeScript.Translators
         return translator.Translate(tp.GetElementType()) + "[]";
       }
 
+      if (tp == typeof(void))
+        return "void";
+
       if (tp.IsGenericType) {
         name = tp.Name.Split('`').First() + "<" + String.Join(", ", tp.GetGenericArguments().Select(x => translator.Translate(x))) + ">";
         fullName = tp.Namespace + "." + name;
@@ -43,6 +46,7 @@ namespace Timple.Tools.TypeScript.Translators
       if (tp == typeof(Object))
         return "any";
 
+      translator.RegisterType(tp.FullName, fullName);
       PropertiesOnlyTemplate templ = new PropertiesOnlyTemplate(name, toTranslate, translator, tp.Namespace.StartsWith("System"));
       translator.Writer.Write(templ.TransformText());
       return fullName;

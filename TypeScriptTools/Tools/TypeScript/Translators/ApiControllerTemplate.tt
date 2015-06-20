@@ -26,20 +26,21 @@ module <#=c.ControllerType.Namespace#> {
       this.routePrefix = "<#=c.RoutePrefix != null ? c.RoutePrefix.Prefix : "" #>" + "/";
     }
 
-    <#
-    foreach(var call in c.Calls) {
-    #>
+<#
+foreach(var call in c.Calls) {
+#>
 
-    <#=call.CallMethod.Name#> ( <#=GenerateCallParameters(call)#> ) {
+    <#=call.CallMethod.Name#> ( <#=GenerateCallParameters(call)#> ) <#=GenerateCallReturn(call)#> {
       var route = this.routePrefix + <#=GenerateCallRouteConcat(call)#>;
       var obj = <#=GetCallBodyParameter(call)#>;
 
       return <#=GenerateRESTCall(call,"route","obj") #> ;
     }
 
-    <#
-    }
-    #>
+<#
+}
+#>
+
   }
 
 <#

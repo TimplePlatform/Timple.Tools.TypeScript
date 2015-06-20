@@ -101,8 +101,10 @@ namespace Timple.Tools.TypeScript
 
         p.WaitForExit();
 
-        if (p.ExitCode != 0)
+        if (p.ExitCode != 0) {
+          errors.AddRange(infos);
           throw new TypeScriptNativeCompilerException(errors);
+        }
 
       }
 
