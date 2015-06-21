@@ -153,10 +153,10 @@ var values = Enum.GetValues(tp);
             
             #line default
             #line hidden
-            this.Write("    private _");
+            this.Write("    ");
             
             #line 41 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\PropertiesOnlyTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(p.Name));
+            this.Write(this.ToStringHelper.ToStringWithCulture(ToCamelCase(p.Name)));
             
             #line default
             #line hidden
@@ -180,64 +180,6 @@ var values = Enum.GetValues(tp);
             
             #line 46 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\PropertiesOnlyTemplate.tt"
 
-  foreach(var p in props) { 
-    if(p.CanRead) { 
-
-            
-            #line default
-            #line hidden
-            this.Write("    public get ");
-            
-            #line 50 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\PropertiesOnlyTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(p.Name));
-            
-            #line default
-            #line hidden
-            this.Write("() { \r\n      return this._");
-            
-            #line 51 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\PropertiesOnlyTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(p.Name));
-            
-            #line default
-            #line hidden
-            this.Write(";\r\n    }\r\n\r\n");
-            
-            #line 54 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\PropertiesOnlyTemplate.tt"
- 
-    } 
-
-    if(p.CanWrite) { 
-
-            
-            #line default
-            #line hidden
-            this.Write("    public set ");
-            
-            #line 59 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\PropertiesOnlyTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(p.Name));
-            
-            #line default
-            #line hidden
-            this.Write("(value) {\r\n      this._");
-            
-            #line 60 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\PropertiesOnlyTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(p.Name));
-            
-            #line default
-            #line hidden
-            this.Write(" = value;\r\n    }\r\n\r\n");
-            
-            #line 63 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\PropertiesOnlyTemplate.tt"
-  
-    }
-  } 
-
-            
-            #line default
-            #line hidden
-            
-            #line 67 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\PropertiesOnlyTemplate.tt"
-
 } else {
 
             
@@ -245,21 +187,21 @@ var values = Enum.GetValues(tp);
             #line hidden
             this.Write("  export interface ");
             
-            #line 70 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\PropertiesOnlyTemplate.tt"
+            #line 49 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\PropertiesOnlyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(TypeName));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 70 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\PropertiesOnlyTemplate.tt"
+            #line 49 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\PropertiesOnlyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Implements));
             
             #line default
             #line hidden
             this.Write(" {\r\n");
             
-            #line 71 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\PropertiesOnlyTemplate.tt"
+            #line 50 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\PropertiesOnlyTemplate.tt"
 
   var props = TheType.GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.DeclaredOnly);
   foreach(var p in props) { 
@@ -269,21 +211,21 @@ var values = Enum.GetValues(tp);
             #line hidden
             this.Write("    ");
             
-            #line 75 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\PropertiesOnlyTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(p.Name));
+            #line 54 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\PropertiesOnlyTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(ToCamelCase(p.Name)));
             
             #line default
             #line hidden
             this.Write(" : ");
             
-            #line 75 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\PropertiesOnlyTemplate.tt"
+            #line 54 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\PropertiesOnlyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Translator.Translate(p.PropertyType)));
             
             #line default
             #line hidden
             this.Write(";\r\n");
             
-            #line 76 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\PropertiesOnlyTemplate.tt"
+            #line 55 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\PropertiesOnlyTemplate.tt"
 
   }
 
@@ -292,7 +234,7 @@ var values = Enum.GetValues(tp);
             #line hidden
             this.Write("\r\n\r\n");
             
-            #line 81 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\PropertiesOnlyTemplate.tt"
+            #line 60 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\PropertiesOnlyTemplate.tt"
 
 }
 
@@ -301,7 +243,7 @@ var values = Enum.GetValues(tp);
             #line hidden
             this.Write("  }\r\n\r\n");
             
-            #line 86 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\PropertiesOnlyTemplate.tt"
+            #line 65 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\PropertiesOnlyTemplate.tt"
 
 if(!String.IsNullOrEmpty(TheType.Namespace)){
 
@@ -310,7 +252,7 @@ if(!String.IsNullOrEmpty(TheType.Namespace)){
             #line hidden
             this.Write("}\r\n");
             
-            #line 90 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\PropertiesOnlyTemplate.tt"
+            #line 69 "W:\Repos\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\PropertiesOnlyTemplate.tt"
 
 }
 

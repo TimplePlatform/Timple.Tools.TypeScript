@@ -1,10 +1,12 @@
 /// <reference path="typings/jquery/jquery.d.ts" />
 module Timple {
 
+  export var BasePath: string = '';
+
   export function AjaxGET<T>(route: string): JQueryPromise<T> {
     return jQuery.ajax({
       type: 'GET',
-      url: this.path,
+      url: BasePath + route,
       dataType: 'json'
     });
   }
@@ -12,7 +14,7 @@ module Timple {
   export function AjaxPOST<T>(route: string, bodyObject: any): JQueryPromise<T> {
     return jQuery.ajax({
       type: 'POST',
-      url: this.path,
+      url: BasePath + route,
       contentType: 'application/json',
       dataType: 'json',
       data: JSON.stringify(bodyObject),
@@ -22,14 +24,14 @@ module Timple {
   export function AjaxDELETE<T>(route: string): JQueryPromise<T> {
     return jQuery.ajax({
       type: 'DELETE',
-      url: this.path
+      url: BasePath + route
     });
   }
 
   export function AjaxPUT<T>(route: string, bodyObject: any): JQueryPromise<T> {
     return jQuery.ajax({
       type: 'PUT',
-      url: this.path,
+      url: BasePath + route,
       contentType: "application/json",
       dataType: 'json',
       data: JSON.stringify(bodyObject)

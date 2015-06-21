@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +25,20 @@ namespace Timple.Tools.TypeScript.Translators
         var last = Translator.TranslatingStack.Skip(Translator.TranslatingStack.Count - 1).FirstOrDefault();
         return last != null ? last.FullName : String.Empty;
       }
+    }
+
+    public string ToCamelCase(string str) {
+      if (string.IsNullOrEmpty(str))
+        return str;
+
+      if (!char.IsUpper(str[0]) || (str.Length > 1 && char.IsUpper(str[1]) && char.IsUpper(str[0])))
+        return str;
+
+      string camelCase = char.ToLower(str[0], CultureInfo.InvariantCulture).ToString(CultureInfo.InvariantCulture);
+      if (str.Length > 1)
+        camelCase += str.Substring(1);
+
+      return camelCase;
     }
 
     public String Extends {

@@ -68,6 +68,7 @@
     <Compile Include="Tools\TypeScript\Translators\DictionaryTranslator.cs" />
     <Compile Include="Tools\TypeScript\Translators\GuidTranslator.cs" />
     <Compile Include="Tools\TypeScript\Translators\HttpObjectsTranslator.cs" />
+    <Compile Include="Tools\TypeScript\Translators\NullableTranslator.cs" />
     <Compile Include="Tools\TypeScript\Translators\PropertiesOnlyTemplate.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

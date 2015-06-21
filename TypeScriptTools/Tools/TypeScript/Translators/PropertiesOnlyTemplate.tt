@@ -38,32 +38,11 @@ var values = Enum.GetValues(tp);
   var props = TheType.GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.DeclaredOnly);
   foreach(var p in props) { 
 #>
-    private _<#=p.Name#> : <#=Translator.Translate(p.PropertyType)#>;
+    <#=ToCamelCase(p.Name)#> : <#=Translator.Translate(p.PropertyType)#>;
 <#
   }
 #>
 
-<#
-  foreach(var p in props) { 
-    if(p.CanRead) { 
-#>
-    public get <#=p.Name#>() { 
-      return this._<#=p.Name#>;
-    }
-
-<# 
-    } 
-
-    if(p.CanWrite) { 
-#>
-    public set <#=p.Name#>(value) {
-      this._<#=p.Name#> = value;
-    }
-
-<#  
-    }
-  } 
-#>
 <#
 } else {
 #>
@@ -72,7 +51,7 @@ var values = Enum.GetValues(tp);
   var props = TheType.GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.DeclaredOnly);
   foreach(var p in props) { 
 #>
-    <#=p.Name#> : <#=Translator.Translate(p.PropertyType)#>;
+    <#=ToCamelCase(p.Name)#> : <#=Translator.Translate(p.PropertyType)#>;
 <#
   }
 #>
