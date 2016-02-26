@@ -6,5 +6,4 @@
 /**
  * Generated at <#=DateTime.Now.ToString()#>
  */
- /// <reference path="scripts/timple-ajax.ts" />
- /// <reference path="scripts/typings/jquery/jquery.d.ts" />
+ 

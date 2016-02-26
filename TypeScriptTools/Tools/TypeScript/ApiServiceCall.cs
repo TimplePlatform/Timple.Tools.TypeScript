@@ -6,11 +6,10 @@ using System.Reflection;
 using System.Text;
 using System.Web.Http;
 using System.Web.Http.Controllers;
+using System.Web.Http.Description;
 
-namespace Timple.Tools.TypeScript
-{
-  public class ApiServiceCall
-  {
+namespace Timple.Tools.TypeScript {
+  public class ApiServiceCall {
     public ApiServiceCall(ApiService svc, MethodInfo callMethod) {
       this.Service = svc;
       this.Parameters = new List<ApiServiceCallParameter>();
@@ -18,6 +17,10 @@ namespace Timple.Tools.TypeScript
       this.Route = callMethod.GetCustomAttribute<RouteAttribute>();
       this.HttpMethod = (IActionHttpMethodProvider)callMethod.GetCustomAttributes().Where(x => typeof(IActionHttpMethodProvider).IsAssignableFrom(x.GetType())).FirstOrDefault();
       this.ReturningType = callMethod.ReturnType;
+
+      var rtattr = callMethod.GetCustomAttribute<ResponseTypeAttribute>();
+      if (null != rtattr)
+        ReturningType = rtattr.ResponseType;
 
       DiscoverParameters();
     }

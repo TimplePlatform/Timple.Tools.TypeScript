@@ -19,7 +19,7 @@ module <#=TheType.Namespace#> {
 
 if(TheType.IsEnum){
 #>
-export enum <#=TypeName#> {
+  export enum <#=TypeName#> {
 <#
 var tp = TheType;
 var names = Enum.GetNames(tp);
@@ -27,36 +27,21 @@ var values = Enum.GetValues(tp);
 
   for (var i = 0; i < names.Length; i++) {
 #>
-  <#=names[i]#> = <#=Enum.Format(tp, values.GetValue(i), "D")#>,
+    <#=names[i]#> = <#=Enum.Format(tp, values.GetValue(i), "D")#>,
 <#
   }
 
-}else if(TheType.IsClass) {
-#>  
-  export class <#=TypeName#> <#=Extends#> <#=Implements#> {
-<#
-  var props = TheType.GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.DeclaredOnly);
-  foreach(var p in props) { 
-#>
-    <#=ToCamelCase(p.Name)#> : <#=Translator.Translate(p.PropertyType)#>;
-<#
-  }
-#>
-
-<#
 } else {
 #>
-  export interface <#=TypeName#> <#=Implements#> {
+  export interface <#=TypeName#> <#=Extends#> {
 <#
   var props = TheType.GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.DeclaredOnly);
   foreach(var p in props) { 
 #>
-    <#=ToCamelCase(p.Name)#> : <#=Translator.Translate(p.PropertyType)#>;
+    <#=ToCamelCase(p.Name)#>?: <#=Translator.Translate(p.PropertyType)#>;
 <#
   }
 #>
-
-
 <#
 }
 #>

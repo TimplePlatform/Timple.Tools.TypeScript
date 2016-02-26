@@ -5,10 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Timple.Tools.TypeScript.Translators
-{
-  public partial class PropertiesOnlyTemplate
-  {
+namespace Timple.Tools.TypeScript.Translators {
+  public partial class PropertiesOnlyTemplate {
     public PropertiesOnlyTemplate(String typeName, Type theType, ITypeScriptTranslator translator, bool skipImplements = false) {
       TheType = theType;
       Translator = translator;
@@ -41,32 +39,17 @@ namespace Timple.Tools.TypeScript.Translators
       return camelCase;
     }
 
-    public String Extends {
+    public string Extends {
       get {
+        var inters = TheType.GetInterfaces().ToList();
         if (TheType.BaseType != null && TheType.BaseType != typeof(object)) {
-          var basetp = Translator.Translate(TheType.BaseType);
-          if (String.IsNullOrEmpty(basetp))
-            return String.Empty;
-          return "extends " + basetp;
+          inters.Add(TheType.BaseType);
         }
 
-        return String.Empty;
-      }
-    }
+        if (inters.Count == 0)
+          return string.Empty;
 
-    public String Implements {
-      get {
-        if (SkipImplements)
-          return String.Empty;
-
-        var inters = TheType.GetInterfaces();
-        if (inters.Length == 0)
-          return String.Empty;
-        var validInters = inters.Select(x => Translator.Translate(x)).Where(x => !String.IsNullOrEmpty(x));
-        if (validInters.Count() == 0)
-          return String.Empty;
-
-        return (TheType.IsClass ? "implements " : "extends ") + String.Join(", ", validInters);
+        return "extends " + string.Join(", ", inters.Select(x => Translator.Translate(x)).Where(x => !string.IsNullOrEmpty(x)));
       }
     }
   }

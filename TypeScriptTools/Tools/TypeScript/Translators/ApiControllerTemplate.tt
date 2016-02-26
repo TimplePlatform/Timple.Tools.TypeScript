@@ -22,7 +22,7 @@ module <#=c.ControllerType.Namespace#> {
   export class <#=c.ControllerType.Name#> {
     private routePrefix: string;
 
-    constructor(){
+    constructor(protected $http: ng.IHttpService){
       this.routePrefix = "<#=c.RoutePrefix != null ? c.RoutePrefix.Prefix : "" #>" + "/";
     }
 
@@ -30,7 +30,7 @@ module <#=c.ControllerType.Namespace#> {
 foreach(var call in c.Calls) {
 #>
 
-    <#=call.CallMethod.Name#> ( <#=GenerateCallParameters(call)#> ) <#=GenerateCallReturn(call)#> {
+    public <#=call.CallMethod.Name#> ( <#=GenerateCallParameters(call)#> ) <#=GenerateCallReturn(call)#> {
       var route = this.routePrefix + <#=GenerateCallRouteConcat(call)#>;
       var obj = <#=GetCallBodyParameter(call)#>;
 

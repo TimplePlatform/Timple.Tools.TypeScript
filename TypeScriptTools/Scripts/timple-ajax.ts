@@ -1,7 +1,8 @@
-/// <reference path="typings/jquery/jquery.d.ts" />
 module Timple {
 
   export var BasePath: string = '';
+
+  export var p: PromiseLike<string>;
 
   export function AjaxGET<T>(route: string): JQueryPromise<T> {
     return jQuery.ajax({

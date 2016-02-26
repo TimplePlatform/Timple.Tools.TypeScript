@@ -5,10 +5,8 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Timple.Tools.TypeScript.Translators
-{
-  public partial class ApiControllerTemplate
-  {
+namespace Timple.Tools.TypeScript.Translators {
+  public partial class ApiControllerTemplate {
     public ApiService Service { get; set; }
     public Type ControllerType {
       get {
@@ -24,7 +22,7 @@ namespace Timple.Tools.TypeScript.Translators
     public String GenerateCallReturn(ApiServiceCall call) {
       //if (call.ReturningType == typeof(void))
       //  return String.Empty;
-      return ": JQueryPromise<" + Translator.Translate(call.ReturningType) + ">";
+      return ": Promise<" + Translator.Translate(call.ReturningType) + ">";
     }
 
     public String GenerateCallRouteConcat(ApiServiceCall call) {
@@ -67,7 +65,7 @@ namespace Timple.Tools.TypeScript.Translators
 
     public String GenerateRESTCall(ApiServiceCall call, String routeVar, String argVar) {
       bool hasArg = call.HttpMethod.HttpMethods.Any(x => x == HttpMethod.Post || x == HttpMethod.Put);
-      String restCall = "Timple.Ajax" + call.HttpMethod.HttpMethods.First().Method;
+      String restCall = "this.$http." + call.HttpMethod.HttpMethods.First().Method.ToLower();
 
       restCall += "<" + Translator.Translate(call.ReturningType) + ">";
       restCall += "(" + routeVar;
