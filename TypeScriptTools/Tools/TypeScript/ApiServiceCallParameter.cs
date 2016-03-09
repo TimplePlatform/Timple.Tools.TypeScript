@@ -5,10 +5,8 @@ using System.Reflection;
 using System.Text;
 using System.Web.Http;
 
-namespace Timple.Tools.TypeScript
-{
-  public class ApiServiceCallParameter
-  {
+namespace Timple.Tools.TypeScript {
+  public class ApiServiceCallParameter {
     public ApiServiceCallParameter(ApiServiceCall call, ParameterInfo info) {
       this.ServiceCall = call;
       this.Parameter = info;
@@ -17,7 +15,12 @@ namespace Timple.Tools.TypeScript
 
       String route = call.Route.Template ?? String.Empty;
 
-      if (FromBody == null && FromUri == null) {
+      if (FromUri != null) {
+        if (!route.Contains($"{{{Parameter.Name}}}")) {
+          FromQueryString = FromUri;
+          FromUri = null;
+        }
+      } else if (FromBody == null) {
         if (route.Contains(Parameter.Name))
           FromUri = new FromUriAttribute();
         else
@@ -30,6 +33,7 @@ namespace Timple.Tools.TypeScript
     public ApiServiceCall ServiceCall { get; private set; }
     public FromBodyAttribute FromBody { get; private set; }
     public FromUriAttribute FromUri { get; private set; }
+    public FromUriAttribute FromQueryString { get; private set; }
     public Type Type {
       get {
         return Parameter.ParameterType;

@@ -63,15 +63,22 @@ namespace Timple.Tools.TypeScript.Translators {
       return "null";
     }
 
-    public String GenerateRESTCall(ApiServiceCall call, String routeVar, String argVar) {
+    public string GetCallConfig(ApiServiceCall call) {
+      var ps = call.Parameters.Where(x => x.FromQueryString != null);
+      if (ps.Count() == 0)
+        return "{}";
+      return "{params: {" + string.Join(",", ps.Select(x => $"{ x.Parameter.Name}:{ x.Parameter.Name}")) + "} }";
+    }
+
+    public String GenerateRESTCall(ApiServiceCall call, String routeVar, String argVar, string argCfg) {
       bool hasArg = call.HttpMethod.HttpMethods.Any(x => x == HttpMethod.Post || x == HttpMethod.Put);
-      String restCall = "this.$http." + call.HttpMethod.HttpMethods.First().Method.ToLower();
+      String restCall = $"Timple.http_{ call.HttpMethod.HttpMethods.First().Method.ToLower()}";
 
       restCall += "<" + Translator.Translate(call.ReturningType) + ">";
-      restCall += "(" + routeVar;
+      restCall += "(this.$http," + routeVar;
       if (hasArg)
         restCall += ", " + argVar;
-      restCall += ");";
+      restCall += "," + argCfg + ");";
       return restCall;
     }
   }

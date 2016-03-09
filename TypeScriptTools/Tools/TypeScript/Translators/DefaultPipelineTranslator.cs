@@ -12,11 +12,11 @@ namespace Timple.Tools.TypeScript.Translators
 
     }
 
-    public bool Accepts(Type tp) {
+    public virtual bool Accepts(Type tp) {
       return true;
     }
 
-    public string Translate(Type tp, TypeScriptPipelineTranslator translator) {
+    public virtual string Translate(Type tp, TypeScriptPipelineTranslator translator) {
       String name;
       String fullName;
       Type toTranslate;
@@ -52,7 +52,7 @@ namespace Timple.Tools.TypeScript.Translators
       return fullName;
     }
 
-    public void Prepare(TypeScriptPipelineTranslator translator) {
+    public virtual void Prepare(TypeScriptPipelineTranslator translator) {
       translator.AddTailTranslator(this);
     }
   }

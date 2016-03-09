@@ -5,11 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http;
 
-namespace TypeScriptTools_Test.Sample
-{
+namespace TypeScriptTools_Test.Sample {
   [RoutePrefix("api")]
-  public class SampleController : ApiController
-  {
+  public class SampleController : ApiController {
 
     [Route("")]
     [HttpGet]
@@ -47,6 +45,13 @@ namespace TypeScriptTools_Test.Sample
       return null;
     }
 
-    
+
+    [Route("Search")]
+    [HttpGet]
+    public BaseClass TestUriParam([FromUri] string criteria) {
+      return null;
+    }
+
+
   }
 }

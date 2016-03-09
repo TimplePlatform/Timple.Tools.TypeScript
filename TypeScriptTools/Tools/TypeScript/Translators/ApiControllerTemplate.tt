@@ -33,8 +33,8 @@ foreach(var call in c.Calls) {
     public <#=call.CallMethod.Name#> ( <#=GenerateCallParameters(call)#> ) <#=GenerateCallReturn(call)#> {
       var route = this.routePrefix + <#=GenerateCallRouteConcat(call)#>;
       var obj = <#=GetCallBodyParameter(call)#>;
-
-      return <#=GenerateRESTCall(call,"route","obj") #> ;
+      var cfg = <#=GetCallConfig(call)#>;
+      return <#=GenerateRESTCall(call,"route","obj","cfg") #> ;
     }
 
 <#

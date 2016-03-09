@@ -135,10 +135,17 @@ foreach(var call in c.Calls) {
             
             #line default
             #line hidden
-            this.Write(";\r\n\r\n      return ");
+            this.Write(";\r\n      var cfg = ");
+            
+            #line 36 "W:\Source\open\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\ApiControllerTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetCallConfig(call)));
+            
+            #line default
+            #line hidden
+            this.Write(";\r\n      return ");
             
             #line 37 "W:\Source\open\Timple.Tools.TypeScript\TypeScriptTools\Tools\TypeScript\Translators\ApiControllerTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(GenerateRESTCall(call,"route","obj")));
+            this.Write(this.ToStringHelper.ToStringWithCulture(GenerateRESTCall(call,"route","obj","cfg")));
             
             #line default
             #line hidden

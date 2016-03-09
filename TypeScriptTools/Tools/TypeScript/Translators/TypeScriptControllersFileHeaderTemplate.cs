@@ -35,7 +35,63 @@ namespace Timple.Tools.TypeScript.Translators
             
             #line default
             #line hidden
-            this.Write("\r\n */\r\n ");
+            this.Write(@"
+ */
+ 
+/**
+ * Helper Functions
+ */
+module Timple{
+  var baseUrl:string = """";
+
+  export function setBaseUrl(url:string){
+    baseUrl = url;  
+  }
+
+  export function http_get<T>($http: ng.IHttpService, url: string, config?: ng.IRequestShortcutConfig): Promise<T>{
+    return $http.get<T>(baseUrl+url,config)
+    .then((ret)=>{
+      if(ret.status >= 200 && ret.status < 300)
+        return ret.data;
+
+      throw ret;
+    });
+  }
+
+  export function http_post<T>($http: ng.IHttpService, url: string, data: any, config?: ng.IRequestShortcutConfig): Promise<T>{
+    return $http.post<T>(baseUrl+url,data,config)
+    .then((ret)=>{
+      if(ret.status >= 200 && ret.status < 300)
+        return ret.data;
+
+      throw ret;
+    });
+  }
+
+  export function http_delete<T>($http: ng.IHttpService, url: string, config?: ng.IRequestShortcutConfig): Promise<T>{
+    return $http.delete<T>(baseUrl+url,config)
+    .then((ret)=>{
+      if(ret.status >= 200 && ret.status < 300)
+        return ret.data;
+
+      throw ret;
+    });
+  }
+
+  export function http_put<T>($http: ng.IHttpService, url: string, data:any, config?: ng.IRequestShortcutConfig): Promise<T>{
+    return $http.put<T>(baseUrl+url,data,config)
+    .then((ret)=>{
+      if(ret.status >= 200 && ret.status < 300)
+        return ret.data;
+
+      throw ret;
+    });
+  }
+}
+/**
+ * End Helper Functions
+ */
+");
             return this.GenerationEnvironment.ToString();
         }
     }
